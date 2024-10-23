@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import TestResult from "@/app/_components/attempted-tests/TestResult"
 import {
     useAttemptAnswersQuery,
@@ -14,7 +14,9 @@ import { Question, Answer } from "@/app/_types";
 const TestResultPage = () => {
   const id = usePathname().split("/")[2]
     const resetStore = useTestAttemptStore((state) => state.reset);
-    resetStore()
+    useEffect(()=>{
+        resetStore()
+    })
     const { data } = useAttemptAnswersQuery(Number(id))
     const setQuestions = useTestAttemptStore((state) => state.setQuestions);
     const setAttemptAnswers = useAttemptAnswersStore(state => state.setAttemptAnswers)
