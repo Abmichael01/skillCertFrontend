@@ -3,7 +3,7 @@ import AttemptedTests from "@/app/_components/attempted-tests/AttemptedTests"
 import ProtectedRoute from "@/app/_layouts/ProtectedRoute";
 import MainPaddingLayout from "@/app/_layouts/MainPaddingLayout";
 
-const page = () => {
+const Page = () => {
     return (
         <ProtectedRoute>
         <MainPaddingLayout>
@@ -15,4 +15,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

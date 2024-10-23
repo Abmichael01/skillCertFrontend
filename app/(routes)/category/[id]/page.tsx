@@ -3,7 +3,7 @@ import Categories from '@/app/_components/Home/Categories';
 import MainPaddingLayout from '@/app/_layouts/MainPaddingLayout';
 import React from 'react';
 
-const page = () => {
+const Page = () => {
     return (
         <MainPaddingLayout>
         	<div className='flex flex-col gap-10'>
@@ -14,4 +14,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

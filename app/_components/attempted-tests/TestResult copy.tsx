@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 
 const TestResult = () => {
     const  percent = useRef<HTMLDivElement | null>(null)
-    const width = percent?.current?.style.width
     
     return (
         <div className=" p-5 flex flex-col items-center">
