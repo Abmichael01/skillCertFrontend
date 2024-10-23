@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import TestResult from "@/app/_components/attempted-tests/TestResult"
 import {
