@@ -30,12 +30,14 @@ const Questions: React.FC<QuestionsProps> = ({ questions }) => {
             Add New Question
           </Button>
           {questions?.map((question, index) => (
-            <AddEditQuestion
+            <div key={index}>
+              <AddEditQuestion
               key={question.id}
               question={question}
               action="edit"
               number={index + 1}
             />
+            </div>
           ))}
           <div ref={addQuestionContainer}>
             <AddEditQuestion action="add" />

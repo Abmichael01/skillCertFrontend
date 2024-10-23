@@ -18,7 +18,11 @@ const Questions = () => {
   return (
     <div className="border border-zinc-300 md:p-10 px-4 py-10 rounded-md flex-grow bg-white">
       {questions?.map((question, index) => (
-        <Question question={question} index={index} />
+        <div
+        key={index}
+        >
+          <Question question={question} index={index} />
+        </div>
       ))}
     </div>
   );

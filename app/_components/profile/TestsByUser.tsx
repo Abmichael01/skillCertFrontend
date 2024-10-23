@@ -19,7 +19,9 @@ import { useParams } from 'next/navigation';
              </div>
              <div className="grid grid-cols-1 vsm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8 mt-4">
                 {publicTests?.map((test, index) => (
-                  <TestCard test={test} index={index} />
+                  <div key={index}>
+                    <TestCard test={test} index={index} />
+                  </div>
                 ))}
             </div>
          </div>

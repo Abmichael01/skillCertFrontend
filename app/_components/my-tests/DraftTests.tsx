@@ -7,7 +7,9 @@ const DraftTests = ({tests}:{tests: TestType[]}) => {
   return (
     <div>
       {tests.map((test, index)=>(
-        <Test test={test} />
+        <div key={index}>
+          <Test test={test} />
+        </div>
       ))}
       {tests.length === 0 && <NoDataFound information="You have no draft" />}
     </div>
