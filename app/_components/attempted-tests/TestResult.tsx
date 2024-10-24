@@ -12,7 +12,7 @@ const TestResult = ({score}: {score: number}) => {
     
     return (
         <div className=" p-5 flex flex-col items-center">
-            <img src="/congrats.png" width={300} height={300} alt="Congratulations" className="vsm:w-[250px] w-full" />
+            <Image src="/congrats.png" width={300} height={300} alt="Congratulations" className="vsm:w-[250px] w-full" />
             <h1 className="font-semibold mb-3 text-xl">Congratulations</h1>
             <h1 className="font-semibold">You Got:</h1>
             <p className="text-[50px] percent-text text-primary font-bold animation-fade-in">{score}%</p>

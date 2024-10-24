@@ -3,11 +3,10 @@
 import React, { useState } from "react"
 import { Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useRef } from "react";
 import { useUploadBannerMutation } from "@/app/_dataOperations/mutations/mutations"
-import { Span } from "next/dist/trace";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { BannerUploadData } from "@/app/_types";
+import Image from "next/image";
 
 
 const Gallery = () => {
@@ -59,7 +58,7 @@ const Gallery = () => {
                             {imageUrl === "" ? <span>Upload Banner</span> : <span>Change Banner</span>}
                         </p>
                     </label>
-                    {imageUrl != "" && <img src={imageUrl} className="object-cover absolute top-0 right-0 w-full h-full rounded-md" />}
+                    {imageUrl != "" && <Image src={imageUrl} width={200} height={300} alt="Banner image" className="object-cover absolute top-0 right-0 w-full h-full rounded-md" />}
                 </div>
                 <Button onClick={handleSubmit} className="w-full mt-8 bg-zinc-700 hover:bg-zinc-700/90" disabled={isPending}>
                     {isPending ? <span>Saving...</span> : <span>Save</span>}

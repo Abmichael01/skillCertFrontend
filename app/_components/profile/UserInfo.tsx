@@ -2,9 +2,9 @@
 
 import { Brain, Pencil, Plus, Share, UserCircle } from 'lucide-react';
 import React from 'react';
-import { useUserStore } from '@/app/_stores/userStore';
 import { useUserProfileQuery } from '@/app/_dataOperations/queries/queries';
 import { useParams } from 'next/navigation';
+import Image from 'next/image';
 
 const UserInfo = () => {
 	const params = useParams()
@@ -16,7 +16,7 @@ const UserInfo = () => {
             	<div className='absolute w-full h-[125px] top-0 left-0 bg-gradient-to-tr from-primary-200 to-primary-400'></div>
             	<div className='flex flex-col gap-3 relative z-10 pt-14 px-5'>
             		<div className='w-[150px] h-[150px] rounded-full border-white border-2 overflow-hidden flex items-center justify-center'>
-            			<img src="/demo.jpg" width={100} height={100} alt="user image" className='w-full h-full object-cover object-center ' />
+            			<Image src="/demo.jpg" width={100} height={100} alt="user image" className='w-full h-full object-cover object-center ' />
             		</div>
             		<p className="font-semibold">@{data?.email}</p>
             		<div className="flex items-center gap-2 " >

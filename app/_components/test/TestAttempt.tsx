@@ -14,6 +14,9 @@ import { Question } from "@/app/_types";
 
 const TestAttempt = () => {
   const resetStore = useTestAttemptStore(state=>state.reset)
+  useEffect(()=>{
+    resetStore()
+  }, [])
   const setQuestions = useTestAttemptStore((state) => state.setQuestions);
   const setDuration = useTestAttemptStore(state => state.setDuration)
   const duration = useTestAttemptStore(state => state.duration)
@@ -24,9 +27,6 @@ const TestAttempt = () => {
   setDuration(data?.test?.duration as number)
   const questions = useTestAttemptStore((state) => state.questions);
 
-  useEffect(()=>{
-    resetStore()
-  }, [])
   
   return (
 
