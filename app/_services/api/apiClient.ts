@@ -2,8 +2,7 @@ import axios from "axios";
 import { useAuthStore } from "@/app/_stores";
 
 const apiClient = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
-  // baseURL: "http://192.168.46.172:8000/api",
+  baseURL: "https://skill-cert-backend.vercel.app/api",
 });
 
 apiClient.interceptors.request.use(
