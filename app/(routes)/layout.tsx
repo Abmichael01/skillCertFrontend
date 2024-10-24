@@ -6,6 +6,7 @@ import Navbar from "../_components/Navbar";
 import ReactQueryProvider from "../ReactQueryProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Suspense } from 'react';
 
 const font = Nunito({
   subsets: ["latin"],
@@ -31,10 +32,12 @@ export default function RootLayout({
           font.variable
         )}
       >
-        
+
         <ReactQueryProvider>
           <Navbar />
-          <div className="pt-24 pb-10 text-zinc-700">{children}</div>
+          <Suspense fallback={<h1>Loading......</h1>}>
+            <div className="pt-24 pb-10 text-zinc-700">{children}</div>
+          </Suspense>
           <ToastContainer
             position="bottom-right"
             autoClose={5000}
