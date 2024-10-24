@@ -39,8 +39,3 @@ export const useAuthStore = create(persist<AuthState>(
     // getStorage: () => localStorage,
   }
 ));
-
-const initialState = useAuthStore.getState();
-if(!initialState.isAuthenticated !){
-  useAuthStore.setState(JSON.parse(localStorage.getItem("auth-storage")!));
-}
