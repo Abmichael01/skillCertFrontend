@@ -27,7 +27,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
       router.push(`/auth/login?next=${nextUrl}`);
       toast.info("Please login to continue");
     }
-  }, [isAuthenticated, route]);
+  }, [isAuthenticated, router]);
 
   if ( !isAuthenticated) {
     return null; // Optionally, render a loading spinner
