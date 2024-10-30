@@ -10,11 +10,11 @@ const TestsByCategory = () => {
     const categoryId = params.id
 	const searchParams = useSearchParams()
   	const page = searchParams.get("page")
-    const { data } = useTestsByCategoryQuery(Number(categoryId))
+    const { data, isPending } = useTestsByCategoryQuery(Number(categoryId))
 
     return (
         <div>
-            <Tests title={`Tests In Category`} tests={data} />
+            <Tests title={`Tests In Category`} tests={data} isPending={isPending} />
         </div>
     );
 };

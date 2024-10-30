@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import { useCategoriesQuery } from "../../_dataOperations/queries/queries";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Categories = () => {
   const params = useParams()
@@ -14,7 +15,7 @@ const Categories = () => {
   const [scrollToLeft, setScrollToLeft] = useState<boolean>(false);
   const categoriesRef = useRef<HTMLDivElement>(null);
 
-  const { data, error } = useCategoriesQuery();
+  const { data, error, isPending } = useCategoriesQuery();
 
   if (error) {
     console.log(error);
@@ -116,6 +117,13 @@ const Categories = () => {
             </h1>
           </Link>
         ))}
+        {isPending && (
+          Array.from({length: 12}).map((_, index)=>(
+            <div key={index}>
+              <Skeleton className="w-[150px] h-[100px]" />
+            </div>
+            ))
+        )}
       </div>
 
       {scrollToLeft && (

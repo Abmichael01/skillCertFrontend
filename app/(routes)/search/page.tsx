@@ -5,7 +5,7 @@ import React from 'react';
 const Page = () => {
     return (
         <MainPaddingLayout>
-        	<div>
+        	<div className='w-full'>
         		<Search />
         	</div>
         </MainPaddingLayout>

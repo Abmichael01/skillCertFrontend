@@ -2,46 +2,38 @@
 
 import React, { useEffect } from "react";
 import { useAuthStore } from "../_stores";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-interface ProtectedRouteProps{
+interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
-interface AuthStorageData{
-  isAuthenticated: boolean;
-  accessToken: string;
-  refreshToken: string;
-}
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+  const isAuthenticated = useAuthStore(state=>state.isAuthenticated);
+  
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
-  children,
-}) => {
-  const { isAuthenticated } = useAuthStore();
-  const pathname = usePathname();
   const router = useRouter();
 
+  // useInitializeAuth();
+
+  // const storedAuthData = localStorage.getItem("auth-storage");
+  // const { state } = JSON.parse(storedAuthData); // Destructure the state from the parsed object
+  // const { isAuthenticated, accessToken, refreshToken } = state
 
   useEffect(() => {
-    const checkAndRedirect = async () =>{
-      if (!isAuthenticated) {
-        const nextUrl = window.location.pathname + window.location.search;
-        router.push(`/auth/login?next=${nextUrl}`);
-        toast.info("Please login to continue");
-      }
+    if (!isAuthenticated) {
+      const nextUrl = window.location.pathname + window.location.search;
+      router.push(`/auth/login?next=${nextUrl}`);
+      toast.info("Please login to continue");
     }
-    
-    checkAndRedirect()
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated]);
 
-  if (!isAuthenticated) {
-    return null; // or loading spinner, or any other component to show during redirection
+  if ( !isAuthenticated) {
+    return null; // Optionally, render a loading spinner
   }
 
-  return <div>{children}</div>;
-  
-    
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

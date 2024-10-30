@@ -1,5 +1,3 @@
-"use client"
-
 import { create } from "zustand";
 import { persist } from "zustand/middleware"
 
@@ -15,8 +13,8 @@ interface AuthState {
 
 
 export const useAuthStore = create(persist<AuthState>(
-  (set) => ({
-    isAuthenticated: false,
+  (set) => ({ 
+    isAuthenticated: true,
     accessToken: null,
     refreshToken: null,
     setAuth: (accessToken: string, refreshToken: string) => {

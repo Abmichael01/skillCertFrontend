@@ -7,7 +7,8 @@ import React, { FormEventHandler, useState } from 'react';
 
 const SearchBox = () => {
 	const params = useSearchParams()
-	const [query, setQuery] = useState(params.get("query"))
+	const q = params.get("query") || ""
+	const [query, setQuery] = useState(q)
 	const router = useRouter()
 
 	const search = (e: React.FormEvent<HTMLFormElement>) => {

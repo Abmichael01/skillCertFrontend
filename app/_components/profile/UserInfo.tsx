@@ -12,13 +12,13 @@ const UserInfo = () => {
 	const { data } = useUserProfileQuery(Number(userId))
     return (
         <div>
-            <div className=' w-[300px] border border-300 rounded-sm relative overflow-hidden min-h-[50vh]'>
+            <div className=' md:w-[300px] w-full border border-300 rounded-sm relative overflow-hidden'>
             	<div className='absolute w-full h-[125px] top-0 left-0 bg-gradient-to-tr from-primary-200 to-primary-400'></div>
             	<div className='flex flex-col gap-3 relative z-10 pt-14 px-5'>
             		<div className='w-[150px] h-[150px] rounded-full border-white border-2 overflow-hidden flex items-center justify-center'>
             			<Image src="/demo.jpg" width={100} height={100} alt="user image" className='w-full h-full object-cover object-center ' />
             		</div>
-            		<p className="font-semibold">@{data?.email}</p>
+            		<p className="font-semibold">@{data?.username}</p>
             		<div className="flex items-center gap-2 " >
             			<button className="py-2 flex-grow flex justify-center gap-2 bg-primary text-white rounded-full ">
             				<Plus />

@@ -13,7 +13,6 @@ export const useAuthenticateUser = () => {
   }) => {
     setAuth(data.access, data.refresh);
     setUser();
-    
   };
 
   const logoutUser = () =>{

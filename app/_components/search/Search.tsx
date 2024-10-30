@@ -6,19 +6,16 @@ import { useSearchQuery } from '@/app/_dataOperations/queries/queries';
 import { useSearchParams } from 'next/navigation';
 import SearchBox from './SearchBox';
 import NoDataFound from '../NoDataFound';
-import { Suspense } from 'react';
-
+import SearchHighlighter from './SearchHighlighter';
 const Search = () => {
 	const searchParams = useSearchParams()
 	const query = searchParams.get("query") as string
-	const { data } = useSearchQuery(query)
+	const { data, isPending } = useSearchQuery(query)
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<div className="flex flex-col items-center mt-5 gap-10">
+			<div className="flex flex-col items-center mt-5 gap-10 w-full">
 				<SearchBox />
-				{data?.length === 0 ? <NoDataFound information='No Data Found' /> : <Tests title='Search Result' tests={data} />}
+				{data?.length === 0 ? <NoDataFound information='No Data Found' /> : <Tests title='Search Result' tests={data} isPending={isPending} />}
 			</div>
-		</Suspense>
 	);
 };
 

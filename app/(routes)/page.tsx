@@ -15,7 +15,7 @@ export default function Home() {
           <hr className="mt-5" />
           <SearchAndCategories />
           <PopularTests />
-          <Image src="/banner1.png" alt="banner1" width={100} height={100}   className="h-[300px] w-full object-cover mt-5 object-top" />
+          <Banner1 />
           <LatestTests />
         </div>
       </MainPaddingLayout>

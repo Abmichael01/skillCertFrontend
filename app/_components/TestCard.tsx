@@ -1,9 +1,13 @@
+"use client"
+
 import React from 'react';
 import { Test } from '../_types';
 import DynamicBanner from './DynamicBanner';
 import { Brain, ThumbsUp } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import SearchHighlighter from './search/SearchHighlighter';
 
 
 interface TestCardProp {
@@ -12,10 +16,12 @@ interface TestCardProp {
 }
 
 const TestCard = ({ test, index }: TestCardProp ) => {
+  const searchParams = useSearchParams()
+  const query = searchParams.get("query") as string
     return (
         <div
             key={index}
-            className={`border border-zinc-300  p-3 rounded-md shadow-sm group cursor-pointer flex flex-col justify-between `}
+            className={`border border-zinc-300  p-3 rounded-md shadow-sm group cursor-pointer flex flex-col justify-between w-full`}
           >
 
             <div className={`w-full h-40 border rounded-md overflow-hidden  `} >
@@ -33,7 +39,13 @@ const TestCard = ({ test, index }: TestCardProp ) => {
 
             </div>
             <div className="flex flex-col mt-2 gap-2">
-              <h1 className="font-semibold text-lg">{test.title}</h1>
+              {query ? (
+                <SearchHighlighter query={query}>
+                  <h1 className="font-semibold text-lg">{test.title}</h1>
+                </SearchHighlighter>
+                ) : (
+                <h1 className="font-semibold text-lg">{test.title}</h1>
+              )}
               <div className="flex items-center justify-between text-sm">
                 <span>{test.duration}mins</span>
                 <p className="flex items-center gap-2 cursor-pointer">

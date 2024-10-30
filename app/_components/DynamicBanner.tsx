@@ -12,7 +12,7 @@ const DynamicBanner = () => {
     // }
 
     return (
-        <div className={`w-full h-full flex flex-col items-center gap-3 justify-center flex-wrap overflow-hidden p-5 bg-gray-300`}>
+        <div className={`w-full h-full flex flex-col items-center gap-3 justify-center flex-wrap overflow-hidden p-5 bg-primary-100`}>
             <Brain className="text-zinc-600 w-[40px] h-[40px]" />
             <h1>SkillCert</h1>
         </div>

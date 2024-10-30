@@ -19,13 +19,13 @@ export const shuffleArray = <T,>(array: T[]): T[] => {
 };
 
 const RelatedTests = ({categoryId}: {categoryId: number}) => {
-  const { data } = useTestsQuery();
+  const { data, isPending } = useTestsQuery();
   let relatedTests = data?.filter(test => test.category === categoryId) ?? [];
   relatedTests = shuffleArray(relatedTests) as Test[]
 
   return (
     <>
-      <Tests tests={relatedTests?.splice(0, 8)} title="Related Tests" />
+      <Tests tests={relatedTests?.splice(0, 8)} title="Related Tests" isPending={isPending} />
     </>
   );
 };
