@@ -10,14 +10,16 @@ import AnswersNav from '@/app/_components/attempted-tests/AnswersNav'
 import { usePathname } from "next/navigation"
 import { useTestAttemptStore, useAttemptAnswersStore } from "@/app/_stores";
 import { Question, Answer } from "@/app/_types";
+import QuestionAndAnswersSkeleton from '../Skeletons/QuestionAndAnswersSkeleton';
 
 const TestResultPage = () => {
   const id = usePathname().split("/")[2]
     const resetStore = useTestAttemptStore((state) => state.reset);
-    useEffect(()=>{
-        resetStore()
-    })
-    const { data } = useAttemptAnswersQuery(Number(id))
+    // useEffect(()=>{
+    //     resetStore()
+    // })
+    resetStore()
+    const { data, isPending } = useAttemptAnswersQuery(Number(id))
     const setQuestions = useTestAttemptStore((state) => state.setQuestions);
     const setAttemptAnswers = useAttemptAnswersStore(state => state.setAttemptAnswers)
     setAttemptAnswers(data?.answers as Answer[])
@@ -25,11 +27,12 @@ const TestResultPage = () => {
     console.log(data)
   return (
     <div>
-      <TestResult score={data?.score as number} />
+      <TestResult score={data?.score as number} isPending={isPending} />
       <div className="mt-20 flex gap-5 flex-col-reverse lg:flex-row">
           <Answers />
-          <AnswersNav />
+          <AnswersNav /> 
       </div>
+      {/*<QuestionAndAnswersSkeleton />*/}
     </div>
   )
 }

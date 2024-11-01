@@ -13,7 +13,7 @@ const schema = TestAttemptAnswerSchema;
 const Answers = () => {
 
   const questions = useTestAttemptStore((state) => state.questions);
-  console.log(questions)
+  console.log(questions) 
   return (
     <div className="border border-zinc-300 md:p-10 px-4 py-10 rounded-md flex-grow bg-white">
       {questions?.map((question, index) => (

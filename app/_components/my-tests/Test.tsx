@@ -32,7 +32,11 @@ const Test = ({test}: {test: TestType}) => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className=" z-[9999] ">
                     <DropdownMenuItem>
-                        <Link href={`/my-tests/${test.slug}/edit?tab=overview`} target="_blank" className="flex gap-2 items-center">
+                        <Link href={`/my-tests/${test.slug}/edit?tab=overview`} target="_blank" className="lg:flex hidden gap-2 items-center">
+                            <Edit className=" w-4 h-4 text-zinc-800" />
+                            Edit
+                        </Link>
+                        <Link href={`/my-tests/${test.slug}/edit?tab=overview`} className="flex lg:hidden gap-2 items-center">
                             <Edit className=" w-4 h-4 text-zinc-800" />
                             Edit
                         </Link>

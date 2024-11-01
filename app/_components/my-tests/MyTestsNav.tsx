@@ -26,7 +26,7 @@ const MyTestsNav = () => {
   }
 
   return (
-    <div className="border-b flex gap-10">
+    <div className="border-b flex sm:gap-10 gap-3">
       {navigation.map((nav, index) => (
         <div
           key={index}

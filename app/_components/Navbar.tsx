@@ -10,7 +10,7 @@ import Logo from "./Logo";
 
 const Navbar = () => {
   const { user } = useUserStore();
-  const { isAuthenticated } = useAuthStore();
+  const isAuthenticated = useAuthStore(state=>state.isAuthenticated);
   return (
     <div className="fixed top-0 left-0 py-5 border-b right-0 bg-white z-[999]">
       <MainPaddingLayout>

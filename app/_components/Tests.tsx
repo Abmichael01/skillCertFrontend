@@ -27,7 +27,7 @@ const Tests = ({
         {isPending && (
           Array.from({length:8}).map((_, index)=>(
           <div key={index} className="flex flex-col gap-3">
-            <Skeleton className=" h-[160px]" />
+            <Skeleton className=" h-[160px] bg-slate-100" />
             <Skeleton className="h-[20px]" />
             <Skeleton className="h-[40px]" />
           </div>
