@@ -15,7 +15,7 @@ const FilteredTests = ({ tests, isPending }: { tests: TestType[]; isPending: boo
       <div className='flex flex-col gap-5' mt-1>
       	{isPending && (
       		Array.from({length: 8}).map((_, index)=>(
-      			<div>
+      			<div key={index}>
 	      			<Skeleton className="h-[40px]" />
 	      		</div>
       		))
