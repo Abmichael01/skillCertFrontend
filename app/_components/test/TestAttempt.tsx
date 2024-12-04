@@ -36,7 +36,7 @@ const TestAttempt = () => {
             <h1>{data?.test.title}</h1>
             <div className="flex items-center gap-2">
               <p>Time Remaining:</p>
-              <p className="animate-pulse">{duration-timeSpent}:00</p>
+              <p className="animate-pulse">{duration}:00</p>
             </div>
           </div>
           <div className="flex gap-5 flex-col-reverse lg:flex-row">
