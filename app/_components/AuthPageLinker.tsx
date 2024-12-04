@@ -10,7 +10,7 @@ interface Props {
 
 const AuthPageLinker = ({text, link, linkText}: Props) => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center justify-center">
       {text}
       <Link href={link}>
         <Button variant={"link"} className="px-1 py-0">

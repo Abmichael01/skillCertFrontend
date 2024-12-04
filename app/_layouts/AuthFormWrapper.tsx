@@ -1,5 +1,6 @@
 import React from "react"
 import Link from "next/link";
+import Logo from "@/app/_components/Logo"
 
 const AuthFormWrapper = ({
   children,
@@ -9,9 +10,7 @@ const AuthFormWrapper = ({
   return (
       <div className="flex flex-col gap-5 vsm:px-10 py-10 rounded-lg md:shadow-md md:border w-full vsm:w-[500px]">
         <Link href="/" className="text-xl flex gap-3 flex-col text-center items-center w-fit self-center">
-          <span className="text-2xl font-bold">
-            Skill<span className="text-primary">Cert</span>
-          </span>
+          <Logo />
         </Link>
         {children}
         

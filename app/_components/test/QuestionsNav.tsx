@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowRight } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTestAttemptStore } from "@/app/_stores";
 import { useSearchParams } from "next/navigation";
 import { useSubmitTestMutation } from "@/app/_dataOperations/mutations/mutations";
@@ -11,6 +11,7 @@ import { ConfirmActionDialog } from "../ConfirmActionDialog";
 
 
 const QuestionsNav = () => {
+  const [timeSpent, setTimeSpent] = useState(0)
   const router = useRouter();
   const questions = useTestAttemptStore((state) => state.questions);
   const currentQuestionIndex = useTestAttemptStore((state) => state.currentQuestionIndex);
@@ -52,9 +53,9 @@ const QuestionsNav = () => {
     })
   }
 
-  if(duration === 0){
-    autoSubmitTest()
-  }
+  
+
+  
 
 
   return (

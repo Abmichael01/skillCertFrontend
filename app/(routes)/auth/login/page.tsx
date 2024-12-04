@@ -11,7 +11,7 @@ const page = () => {
         <AuthFormWrapper>
           <h1 className="text-xl text-center">Welcome Back!</h1>
           <LoginForm />
-          <GoogleAuthButton />
+          {/* <GoogleAuthButton /> */}
           <AuthPageLinker
             link="/auth/signup"
             linkText="Signup"
