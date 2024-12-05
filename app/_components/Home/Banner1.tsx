@@ -15,7 +15,7 @@ const Banner1 = () => {
         {/* <Link href="/auth/register" className="border-2 border-primary rounded-md text-white text-[16px] px-6 py-[8px] w-fit hover:bg-primary transition">Register Now</Link> */}
       </div>
 
-      <div className="animate-bounce text-gray-400">
+      <div className="hidden lg:block animate-bounce text-gray-400">
         <File width={150} height={150}/>
       </div>
     </div>
