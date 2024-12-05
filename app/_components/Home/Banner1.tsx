@@ -15,7 +15,7 @@ const Banner1 = () => {
         <Link href="/auth/register" className="border-2 border-primary rounded-md text-white text-[16px] px-6 py-[8px] w-fit hover:bg-primary transition">Register Now</Link>
       </div>
 
-      <div className="animation-bounce">
+      <div className="animate-bounce">
         <File width={150} height={150}/>
       </div>
     </div>
