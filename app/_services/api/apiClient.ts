@@ -1,5 +1,8 @@
+"use client"
+
 import axios from "axios";
 import { useAuthStore } from "@/app/_stores";
+import { useRouter } from "next/navigation";
 
 const apiClient = axios.create({
   baseURL: "https://skill-cert-backend.vercel.app/api",
@@ -28,6 +31,7 @@ apiClient.interceptors.response.use(
   async (error) => {
     console.log("error dey");
     const originalRequest = error.config;
+    const router = useRouter()
 
     if (error.response.status == 401 && !originalRequest._retry) {
       originalRequest._retry = true;
@@ -46,9 +50,11 @@ apiClient.interceptors.response.use(
           return apiClient(originalRequest);
         } catch (refreshError) {
           destroyTokens();
+          router.push("/auth/login")
         }
       } else if (refreshToken === "undefined"){
         destroyTokens();
+        router.push("/auth/login")
       }
     }
     return Promise.reject(error);
