@@ -78,7 +78,7 @@ const UserDropdown = () => {
           {items.map((item, index) => (
             <DropdownMenuItem onClick={() => navigate(item.link)} key={index}>
              {item.icon}
-             {item.name}
+             <span>{item.name}</span>
             </DropdownMenuItem>
           ))}
 
