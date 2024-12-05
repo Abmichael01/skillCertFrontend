@@ -104,6 +104,7 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        cinzel: ["Cinzel Decorative"]
       },
     },
   },
