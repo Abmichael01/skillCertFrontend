@@ -76,7 +76,7 @@ const UserDropdown = () => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           {items.map((item, index) => (
-            <DropdownMenuItem onClick={() => navigate(item.link)} key={index}>
+            <DropdownMenuItem onClick={() => navigate(item.link)} key={index} className="flex items-center gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-sm">
              {item.icon}
              <span>{item.name}</span>
             </DropdownMenuItem>
