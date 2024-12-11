@@ -5,6 +5,18 @@ import { Button } from "@/components/ui/button";
 import React, { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 interface ConfirmActionDialogProps {
   title: string;
   description: string;
@@ -45,23 +57,39 @@ export const ConfirmActionDialog: React.FC<ConfirmActionDialogProps> = ({
     actionType === "delete" ? "bg-rose-500 hover:bg-rose-600" : "bg-primary hover:bg-primary-dark";
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle className="text-sm">{title}</DialogTitle>
-          <DialogDescription className="text-xl text-gray-900">{description}</DialogDescription>
-        </DialogHeader>
-        <DialogFooter className="flex justify-end gap-4">
-          <Button variant="outline">{cancelLabel}</Button>
-          <Button
-            className={confirmButtonClass}
-            onClick={handleConfirm}
-          >
-            {isPending ? pendingText : confirmLabel}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <AlertDialog>
+    <AlertDialogTrigger>{trigger}</AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>{title}</AlertDialogTitle>
+        <AlertDialogDescription>
+         {description}
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction onClick={handleConfirm}>{isPending ? pendingText : confirmLabel}</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+
+    // <Dialog>
+    //   <DialogTrigger asChild></DialogTrigger>
+    //   <DialogContent>
+    //     <DialogHeader>
+    //       <DialogTitle className="text-sm"></DialogTitle>
+    //       <DialogDescription className="text-xl text-gray-900"></DialogDescription>
+    //     </DialogHeader>
+    //     <DialogFooter className="flex justify-end gap-4">
+    //       <Button variant="outline">{cancelLabel}</Button>
+    //       <Button
+    //         className={confirmButtonClass}
+    //         onClick={handleConfirm}
+    //       >
+            
+    //       </Button>
+    //     </DialogFooter>
+    //   </DialogContent>
+    // </Dialog>
   );
 };

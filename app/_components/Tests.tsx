@@ -13,8 +13,6 @@ const Tests = ({
   title?: string;
   isPending: boolean;
 }) => {
-  
-  console.table(tests)
   return (
     <div className="flex flex-col gap-3 mt-3 w-full">
       {title && <h1 className="text-center text-xl font-semibold">{title}</h1>}

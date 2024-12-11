@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation"
 import Image from "next/image";
 import DynamicBanner from "@/app/_components/DynamicBanner";
 import { ConfirmActionDialog } from "@/app/_components/ConfirmActionDialog";
+import { useAuthStore } from "@/app/_stores";
+import { toast } from "react-toastify";
 
 const TestDetail = () => {
   const pathnameList = usePathname()?.split("/")
@@ -18,13 +20,19 @@ const TestDetail = () => {
   const router = useRouter()
   const { data } = useTestQuery(slug)
   const { mutate, isPending } = useAttemptTestMutation()
+  const { isAuthenticated } = useAuthStore.getState()
 
   const attemptTest = () => {
-    mutate(data?.id as number, {
-      onSuccess: (dataR) => {
-        router.push(`/tests/${data?.slug}/attempt-test/?attemptId=${dataR.id}`)
-      }
-    })
+    if(isAuthenticated) {
+      mutate(data?.id as number, {
+        onSuccess: (dataR) => {
+          router.push(`/tests/${data?.slug}/attempt-test/?attemptId=${dataR.id}`)
+        }
+      })
+    } else {
+      router.push("/auth/login")
+      toast.warning("Please login to continue")
+    }
   }
 
   return (

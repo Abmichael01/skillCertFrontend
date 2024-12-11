@@ -1,8 +1,5 @@
-// "use client"
-
 // import axios from "axios";
-// import { useAuthStore } from "@/app/_stores";
-// import { useRouter } from "next/navigation";
+// import { useAuthStore } from "@/app/_stores"
 
 // const apiClient = axios.create({
 //   baseURL: "https://skill-cert-backend.vercel.app/api",
@@ -30,12 +27,11 @@
 //   (response) => response,
 //   async (error) => {
 //     console.log("error dey");
-//     const originalRequest = error.config;
-//     const router = useRouter()
+//     const originalRequest = error.config
 
 //     if (error.response.status == 401 && !originalRequest._retry) {
 //       originalRequest._retry = true;
-//       const {refreshToken} = useAuthStore.getState()
+//       const {refreshToken, isAuthenticated} = useAuthStore.getState()
 //       if (refreshToken) {
 //         try {
 //           const { data } = await apiClient.post("/jwt/refresh/", {
@@ -48,13 +44,12 @@
 //           ] = `JWT ${data.access}`;
 //           originalRequest.headers["Authorization"] = `JWT ${data.access}`;
 //           return apiClient(originalRequest);
-//         } catch (refreshError) {
+//         } catch (err) {
 //           destroyTokens();
-//           router.push("/auth/login")
+//           console.log(err)
 //         }
 //       } else if (refreshToken === "undefined"){
 //         destroyTokens();
-//         router.push("/auth/login")
 //       }
 //     }
 //     return Promise.reject(error);
@@ -63,7 +58,7 @@
 
 // export default apiClient;
 
-"use client";
+
 
 import axios from "axios";
 import { useAuthStore } from "@/app/_stores";
@@ -72,6 +67,7 @@ const apiClient = axios.create({
   baseURL: "https://skill-cert-backend.vercel.app/api",
 });
 
+// Add request interceptor to attach Authorization header
 apiClient.interceptors.request.use((config) => {
   const { accessToken } = useAuthStore.getState();
   if (accessToken) {
@@ -80,42 +76,54 @@ apiClient.interceptors.request.use((config) => {
   return config;
 });
 
+// Utility to save tokens
 const saveTokens = (access: string, refresh: string) => {
   useAuthStore.getState().setAuth(access, refresh);
 };
 
+// Utility to clear tokens
 const destroyTokens = () => {
   const authStore = useAuthStore.getState();
-  authStore.logout();
+  authStore.setAuth(null, null); // Clear both access and refresh tokens
+  authStore.logout(); // Optional if logout clears additional state
 };
 
+// Add response interceptor to handle 401 errors
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response) => response, // Return response if no errors
   async (error) => {
-    const originalRequest = error.config;
+    console.error("Error during Axios response handling:", error);
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      const { refreshToken } = useAuthStore.getState();
+    if (!error.response) {
+      return Promise.reject(error); // Handle network errors gracefully
+    }
 
-      if (refreshToken && refreshToken !== "undefined") {
+    const originalRequest = error.config as any; // Explicitly cast to avoid type issues
+
+    // Handle 401 Unauthorized errors
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true; // Mark request as retried
+      const { refreshToken, logout } = useAuthStore.getState();
+
+      if (refreshToken) {
         try {
-          const { data } = await apiClient.post("/jwt/refresh/", {
-            refresh: refreshToken,
-          });
-          saveTokens(data.access, refreshToken);
-          originalRequest.headers["Authorization"] = `JWT ${data.access}`;
-          return apiClient(originalRequest);
-        } catch (refreshError) {
-          destroyTokens();
+          console.log("Refreshing token...")
+          // Attempt to refresh the access token
+          const { data } = await apiClient.post("/jwt/refresh/", { refresh: refreshToken });
+          saveTokens(data.access, refreshToken); // Save new tokens
+          originalRequest.headers["Authorization"] = `JWT ${data.access}`; // Update request headers
+          return apiClient(originalRequest); // Retry the original request
+        } catch (err) {
+          console.error("Error refreshing token:", err);
+          logout(); // Clear tokens if refresh fails
         }
       } else {
-        destroyTokens();
+        logout(); // Clear tokens if refreshToken is invalid
       }
     }
-    return Promise.reject(error);
+
+    return Promise.reject(error); // Reject the promise if unhandled
   }
 );
-
 
 export default apiClient;

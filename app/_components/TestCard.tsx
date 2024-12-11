@@ -27,7 +27,7 @@ const TestCard = ({ test, index }: TestCardProp ) => {
             <div className={`w-full h-[200px] md:h-40 border rounded-md overflow-hidden  `} >
               {test.banner !== null ? (
                 <Image
-                  src={test.banner}
+                  src={test.banner || ""}
                   width={50}
                   height={50}
                   alt="anything"
