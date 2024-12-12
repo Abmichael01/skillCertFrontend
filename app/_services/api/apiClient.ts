@@ -81,12 +81,6 @@ const saveTokens = (access: string, refresh: string) => {
   useAuthStore.getState().setAuth(access, refresh);
 };
 
-// Utility to clear tokens
-const destroyTokens = () => {
-  const authStore = useAuthStore.getState();
-  authStore.setAuth(null, null); // Clear both access and refresh tokens
-  authStore.logout(); // Optional if logout clears additional state
-};
 
 // Add response interceptor to handle 401 errors
 apiClient.interceptors.response.use(
