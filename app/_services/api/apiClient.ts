@@ -65,6 +65,7 @@ import { useAuthStore } from "@/app/_stores";
 
 const apiClient = axios.create({
   baseURL: "https://skill-cert-backend.vercel.app/api",
+  // baseURL: "http://127.0.0.1:8000/api"
 });
 
 // Add request interceptor to attach Authorization header

@@ -10,7 +10,7 @@ import { BookMarked, CheckCircle } from 'lucide-react'
 const Activation = () => {
     const pathname = usePathname()
     const ids = pathname.split("/")
-    const [countdown, setCountdown] = useState(10)
+    const [countdown, setCountdown] = useState(5)
     const router = useRouter()
 
     const data = {
@@ -25,14 +25,18 @@ const Activation = () => {
         mutate(data)
     }
 
-    if (isPending) return <p>Activating...</p>
+    if (isPending) return <div>
+      <img src="activating.png" alt="" />
+      <p className='text-lg text-center'>Please wait while we verify your account...</p>
+    </div>
+
     if (isSuccess) {
       setInterval(()=>{
         setCountdown(countdown-1)
       }, 1000)
       setTimeout(()=>{
         router.push("/auth/login")
-      }, 10000)
+      }, 5000)
       return (
         <div className='flex flex-col items-center'>
           <CheckCircle className='w-28 h-28 text-emerald-600' />
@@ -45,6 +49,7 @@ const Activation = () => {
 
   return (
     <div>
+      <img src="activate.png" alt="" />
       <Button onClick={handleActivation}>Activate Account</Button>
     </div>
   )
