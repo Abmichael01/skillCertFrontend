@@ -109,7 +109,7 @@ apiClient.interceptors.response.use(
           originalRequest.headers["Authorization"] = `JWT ${data.access}`; // Update request headers
           return apiClient(originalRequest); // Retry the original request
         } catch (err) {
-          console.error("Error refreshing token:", err);
+          console.log("Error refreshing token:", err);
           logout(); // Clear tokens if refresh fails
         }
       } else {
