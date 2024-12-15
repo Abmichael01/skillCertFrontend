@@ -104,10 +104,16 @@ apiClient.interceptors.response.use(
         try {
           console.log("Refreshing token...")
           // Attempt to refresh the access token
-          const { data } = await apiClient.post("/jwt/refresh/", { refresh: refreshToken });
-          saveTokens(data.access, refreshToken); // Save new tokens
-          originalRequest.headers["Authorization"] = `JWT ${data.access}`; // Update request headers
-          return apiClient(originalRequest); // Retry the original request
+          // const { data } = await apiClient.post("/jwt/refresh/", { refresh: refreshToken })
+          try {
+            const { data } = await apiClient.post("/jwt/refresh/", { refresh: refreshToken });
+            saveTokens(data.access, refreshToken); // Save new tokens
+            originalRequest.headers["Authorization"] = `JWT ${data.access}`; // Update request headers
+            return apiClient(originalRequest);
+          } catch (error) {
+            logout(); 
+            console.error("Error refreshing JWT:", error);
+          }
         } catch (err) {
           console.log("Error refreshing token:", err);
           logout(); // Clear tokens if refresh fails
