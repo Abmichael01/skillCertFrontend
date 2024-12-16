@@ -26,6 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
+      <head>
+        <title>My Next.js App</title>
+        <meta property="og:title" content="SkillCert" />
+        <meta property="og:description" content="SkillCert....Take a Test and Earn a Free Certificate" />
+        <meta property="og:image" content="/ogImage.png" />
+        <meta property="og:url" content="https://skill-cert.vercel.app/" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",

@@ -111,8 +111,8 @@ apiClient.interceptors.response.use(
             originalRequest.headers["Authorization"] = `JWT ${data.access}`; // Update request headers
             return apiClient(originalRequest);
           } catch (error) {
-            logout(); 
-            console.error("Error refreshing JWT:", error);
+            logout();
+            console.log("Error refreshing JWT:", error);
           }
         } catch (err) {
           console.log("Error refreshing token:", err);
