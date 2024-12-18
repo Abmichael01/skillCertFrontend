@@ -19,15 +19,20 @@ const Activation = () => {
     }
 
 
-    const {isPending, mutate, isSuccess} = useActivationMutation()
+    const {isPending, mutate, isSuccess, isError, error} = useActivationMutation()
     
     const handleActivation =() => {
         mutate(data)
     }
 
-    if (isPending) return <div>
-      <img src="activating.png" alt="" />
-      <p className='text-lg text-center'>Please wait while we verify your account...</p>
+    if (isPending) return <div className='flex flex-col items-center gap-5 text-lg text-center'>
+      <img src="/activating.png" alt="" className="vsm:w-[250px] w-full" />
+      <p className='text-lg text-center bg-gradient-to-r from-blue-800 via-gray-800 to-blue-500 bg-clip-text text-transparent'>Please wait while we verify your account...</p>
+    </div>
+
+    if (isError) return <div className='flex flex-col items-center gap-5 text-lg text-center'>
+      <img src="/activating.png" alt="" className="vsm:w-[250px] w-full" />
+      <p className='text-lg text-center bg-gradient-to-r from-blue-800 via-gray-800 to-blue-500 bg-clip-text text-transparent'>Opps... Something went worng</p>
     </div>
 
     if (isSuccess) {
@@ -38,7 +43,7 @@ const Activation = () => {
         router.push("/auth/login")
       }, 5000)
       return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center text-lg text-center font-bold'>
           <CheckCircle className='w-28 h-28 text-emerald-600' />
           <p>Account activated successfully</p>
           <p>You will redirected to the login page in {countdown}s </p>
@@ -48,8 +53,8 @@ const Activation = () => {
 
 
   return (
-    <div>
-      <img src="activate.png" alt="" />
+    <div className='flex flex-col items-center gap-5 font-bold'>
+      <img src="/activate.png" alt="" className="vsm:w-[250px] w-full" />
       <Button onClick={handleActivation}>Activate Account</Button>
     </div>
   )

@@ -6,10 +6,16 @@ import Answers from './Answers'
 import AnswersNav from './AnswersNav'
 import Image from "next/image"
 import { Skeleton } from '@/components/ui/skeleton'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const TestResult = ({score, isPending}: {score: number, isPending: boolean}) => {
     const [percent, setPercent] = useState(score)
-    
+    const router = useRouter()
+
+    const navigate = (link: string) => {
+        router.push(link)
+    }
     
     return (
         <div className=" p-5 flex flex-col items-center">
@@ -35,10 +41,19 @@ const TestResult = ({score, isPending}: {score: number, isPending: boolean}) => 
                 </div>
             )}
             <div className="flex gap-10 mt-20">
-                <Button className="text-lg">
-                    To Certification
+                <Button
+                onClick={()=>{
+                    navigate("/coming-soon")
+                }}
+                className="text-lg">
+                        To Certification
                 </Button>
-                <Button className="border text-lg border-zinc-300 text-zinc-600 hover:bg-white bg-white">
+                <Button  
+                onClick={()=>{
+                    const answersCont = document.getElementById("#answers")
+                    answersCont?.scrollIntoView({ behavior: "smooth" })
+                }}
+                className="border text-lg border-zinc-300 text-zinc-600 hover:bg-white bg-white">
                     My Answers
                 </Button>
             </div>
