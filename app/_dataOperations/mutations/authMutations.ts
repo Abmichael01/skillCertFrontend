@@ -39,9 +39,8 @@ export const useSignupMutation = () => {
   return useMutation({
     mutationFn: (signupData: SignupData) => signupUser(signupData),
     onSuccess: () => {
-      console.log("sinup worked");
       router.push("/auth/login");
-      toast.success("Account Created Successlly");
+      toast.success("Your account has been created, check your email to activate your account");
     },
     onError: (error: unknown) => {
       apiError(error);

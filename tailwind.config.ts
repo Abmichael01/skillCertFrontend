@@ -33,7 +33,7 @@ const config = {
     },
     extend: {
       screens: {
-        "vsm": "500px"
+        "vsm": "450px"
       },
       backgroundImage: {
         "fade-right": "linear-gradient(to right, rgb(225, 225, 225) 100%, rgb(225, 225, 225))",
