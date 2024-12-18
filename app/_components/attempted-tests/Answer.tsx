@@ -66,7 +66,7 @@ const Answer = ({
             const noOptionSelected = !userAnswer;
 
             const optionClasses = `cursor-pointer text-[16px] text-wrap mb-3 items-center px-5 py-3 border-[1px] group rounded-sm w-full flex justify-between
-              ${isSelectedCorrect ? "text-emerald-500 border-emerald-500" : ""}
+              ${isSelectedCorrect ? "text-emerald-500 bg-emerald-100 border-emerald-500" : ""}
               ${isSelected && !isCorrect ? "text-rose-500 border-rose-500" : ""}
               ${!isSelected && isCorrect ? "border-emerald-500 text-emerald-500" : ""}`;
 
