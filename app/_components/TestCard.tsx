@@ -39,7 +39,7 @@ const TestCard = ({ test, index }: TestCardProp ) => {
 
             </div>
             <div className="flex flex-col mt-2 gap-2">
-              {query ? (
+              {query ? ( 
                 <SearchHighlighter query={query}>
                   <h1 className="font-semibold text-lg">{test.title}</h1>
                 </SearchHighlighter>

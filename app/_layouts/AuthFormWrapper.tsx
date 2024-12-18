@@ -8,7 +8,7 @@ const AuthFormWrapper = ({
   children: React.ReactNode;
 }>) => {
   return (
-      <div className="flex flex-col gap-5 vsm:px-10 py-10 rounded-lg md:shadow-2xl md:border w-full vsm:w-[500px] mt-6">
+      <div className="flex flex-col gap-5 vsm:px-10 py-10 rounded-lg sm:shadow-2xl sm:border w-full vsm:w-[500px] mt-6">
         <Link href="/" className="text-xl flex gap-3 flex-col text-center items-center w-fit self-center">
           <Logo />
         </Link>
