@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
 
       <head>
-        <title>My Next.js App</title>
+        <title>SkillCert</title>
         <meta property="og:title" content="SkillCert" />
         <meta property="og:description" content="SkillCert....Take a Test and Earn a Free Certificate" />
         <meta property="og:image" content="/ogImage.png" />
