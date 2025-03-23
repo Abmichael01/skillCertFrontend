@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&display=swap");
 
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
-  
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -53,61 +53,65 @@
   }
 }
 
-
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+@layer base {
+  * {
+    @apply border-border;
   }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
 
-.font-sans{
+.font-sans {
   font-family: "Nunito", san-serif;
 }
 
-.no-scrollbar::-webkit-scrollbar{
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
 .input-container {
-  @apply flex justify-between md:gap-10 lg:gap-40 gap-5 flex-col md:flex-row items-start
+  @apply flex justify-between md:gap-10 lg:gap-40 gap-5 flex-col md:flex-row items-start;
 }
 
 .input {
-  @apply border border-zinc-300 rounded-md text-[16px] w-full text-zinc-500
+  @apply border border-zinc-300 rounded-md text-[16px] w-full text-zinc-500;
 }
 
 .label {
-  @apply flex flex-col gap-2 w-full md:w-[250px] flex-shrink-0
+  @apply flex flex-col gap-2 w-full md:w-[250px] flex-shrink-0;
 }
 
-.label h1{
-  @apply font-bold
+.label h1 {
+  @apply font-bold;
 }
 
-.label p{
-  @apply w-full text-zinc-500
+.label p {
+  @apply w-full text-zinc-500;
 }
 
-.input-error-cont{
-  @apply w-full flex flex-col gap-2
+.input-error-cont {
+  @apply w-full flex flex-col gap-2;
 }
 
-.percent{
+.percent {
   animation: slide-percent 2s linear;
-  @apply bg-primary
+  @apply bg-primary;
 }
 
 @keyframes slide-percent {
-  0%{
+  0% {
     width: 0%;
-  }100%{
+  }
+  100% {
     width: 100%;
   }
 }
 
-.percent-text{
-  text-shadow: 0px 0px 10px #80B4F7 inset
+.percent-text {
+  text-shadow: 0px 0px 10px #80b4f7 inset;
+}
+
+.fancy-text {
+  font-family: "Carter One";
 }
